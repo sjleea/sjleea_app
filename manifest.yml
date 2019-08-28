@@ -1,0 +1,10 @@
+---
+applications:
+- name: lsis-service
+  path: build/libs/lsis-0.0.1-SNAPSHOT.jar
+  routes:
+  - route: https://lsis-service-comedic-emu.apps.evans.pal.pivotal.io/
+  env:
+    WELCOME_MESSAGE: Welcome to application in PCF
+    JBP_CONFIG_OPEN_JDK_JRE: '{ jre: { version: 11.+ } }'
+
