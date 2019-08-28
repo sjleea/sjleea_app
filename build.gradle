@@ -1,68 +1,32 @@
-buildscript {
-    ext {
-        springBootVersion = "2.0.6.RELEASE"
-    }
-
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
-    }
-}
-
-
 plugins {
-    id "java"
+	id 'org.springframework.boot' version '2.1.7.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+	id 'java'
 }
 
-apply plugin: "java"
-apply plugin: "war"
-apply plugin: "org.springframework.boot"
-apply plugin: "io.spring.dependency-management"
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
 
-group = "com.lsis.sjleea"
-version = "0.0.1"
+sourceCompatibility = '1.8'
 
 repositories {
-    mavenCentral()
-}
-
-dependencies {
-    compile "taglibs:standard:1.1.2"
-    compile "org.springframework.boot:spring-boot-starter-web"
-    compile "org.springframework.boot:spring-boot-starter-tomcat"
-    compile "org.springframework.boot:spring-boot-starter-data-jpa"
-    compile("org.springframework.boot:spring-boot-starter-actuator:$springBootVersion")
-    compile("org.springframework.boot:spring-boot-starter-security")
-    compile "mysql:mysql-connector-java:5.1.40"
-    compile "com.fasterxml.jackson.dataformat:jackson-dataformat-csv:2.7.0"
-    compile "commons-lang:commons-lang:2.4"
-    compile "org.apache.tika:tika-core:1.14"
-    compile "com.amazonaws:aws-java-sdk:1.11.74"
-
-    compile "javax.servlet:jstl:1.2"
-    compile "org.apache.tomee:javaee-api:8.0"
-    compile "org.apache.tomcat.embed:tomcat-embed-jasper:8.5.6"
-    compile "org.apache.geronimo.specs:geronimo-osgi-locator:1.1"
-    compile "org.apache.geronimo.components:geronimo-jaspi:2.0.0"
-
-    testCompile "junit:junit:4.12"
+	mavenCentral()
 }
 
 bootRun.environment([
-        "HELLO_MESSAGE": "hello there",
-        "MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE": "*",
-        "MANAGEMENT_ENDPOINT_HEALTH_SHOWDETAILS": "always",
-])
-
+	"WELCOME_MESSAGE" : "Welcome to Application",
+		]
+)
 test.environment([
-        "HELLO_MESSAGE": "hello there, test",
-        "MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE": "*",
-        "MANAGEMENT_ENDPOINT_HEALTH_SHOWDETAILS": "always",
+	"WELCOME_MESSAGE" : "Welcome to Application",
 ])
 
-springBoot {
-    buildInfo()
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation("mysql:mysql-connector-java:8.0.13")
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
 }
