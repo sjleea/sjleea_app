@@ -1,7 +1,6 @@
-package com.lsis.sjleea.sjleea_app;
+package com.lsis.sjleea.sjleeaApp;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "music")

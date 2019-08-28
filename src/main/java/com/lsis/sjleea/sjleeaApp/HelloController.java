@@ -1,4 +1,4 @@
-package com.lsis.sjleea.sjleea_app;
+package com.lsis.sjleea.sjleeaApp;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;

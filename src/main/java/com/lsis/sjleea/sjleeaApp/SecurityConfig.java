@@ -1,14 +1,15 @@
-package com.lsis.sjleea.sjleea_app;
+package com.lsis.sjleea.sjleeaApp;
 
 import org.springframework.beans.factory.annotation.Configurable;
+import org.springframework.boot.actuate.autoconfigure.security.servlet.EndpointRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 
 @Configurable
 @EnableWebSecurity
@@ -17,15 +18,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
-
+        /*
+        http.cors().and().csrf().disable()
+                .authorizeRequests().requestMatchers(EndpointRequest.toAnyEndpoint()).authenticated()
+                .anyRequest().permitAll()
+                .and()
+                .httpBasic()
+                .and()
+                .sessionManagement().sessionAuthenticationStrategy(SessionAuthenticationStrategy()).
+         */
 
         http
-                .csrf().disable()
                 .exceptionHandling()
                 .and()
                 .formLogin()
                 .and()
-                .authorizeRequests().antMatchers("/actuator", "/actuator/**").authenticated()
+                .authorizeRequests().antMatchers("/actuator", "/aectuator/**").authenticated()
                 .and()
                 .logout();
     }

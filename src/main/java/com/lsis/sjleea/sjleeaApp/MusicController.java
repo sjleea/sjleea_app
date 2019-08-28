@@ -1,4 +1,4 @@
-package com.lsis.sjleea.sjleea_app;
+package com.lsis.sjleea.sjleeaApp;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
