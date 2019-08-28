@@ -19,7 +19,8 @@ jobs:
         mariadb: '10.2'
       install: skip
       before_script:
-        - mysql -uroot < databases/create_databases.sql
+        - mysql -uroot < databases/create_databases.
+        - ./gradlew wrapper
       script:
         - ./gradlew clean build
       before_deploy:
